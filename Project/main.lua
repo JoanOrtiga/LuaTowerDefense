@@ -1,8 +1,10 @@
 sceneItems = {}
 towerMap = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}
+clickedSquare = { x = 0, y = 0 }
   
-local Tower = require("Classes/tower")
-local ShopBox = require("Classes/shopBox")
+local Tower = Tower or require("Classes/tower")
+local ShopBox = ShopBox or require("Classes/HUD/shopBox")
+local BuyTower1 = BuyTower1 or require("Classes/HUD/ShopButtons/buyTower1")
 
 
 function love.load()
@@ -11,6 +13,9 @@ function love.load()
   
   local ShopBoxHUD = ShopBox()
   table.insert(sceneItems, ShopBoxHUD)
+  
+ -- local BuyTower1 = BuyTower1()
+ -- table.insert(sceneItems, BuyTower1)
   
   
 end
