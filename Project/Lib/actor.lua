@@ -4,14 +4,14 @@ local Object = Object or require "Lib/object"
 local Actor = Object:extend()
 Actor.position = Vector.new()
 
-function Actor:new(image,x,y,speed,fx,fy)
+function Actor:new(image,x,y,speed,fx,fy, ox, oy)
     self.position = Vector.new(x or 0, y or 0)
     self.scale = Vector.new(1,1)
     self.forward = Vector.new(fx or 1,fy or 0)
     self.speed = speed or 30
     self.rot = 0
     self.image = love.graphics.newImage(image or "Textures/background.jpg")
-    self.origin = Vector.new(self.image:getWidth()/2 ,self.image:getHeight()/2)
+    self.origin = Vector.new(ox or self.image:getWidth()/2  , oy or self.image:getHeight()/2)
     self.height = self.image:getHeight()
     self.width  = self.image:getWidth()
 end
@@ -29,6 +29,7 @@ function Actor:draw()
     sy = self.scale.y
     rr = self.rot
     love.graphics.draw(self.image,xx,yy,rr,sx,sy,ox,oy,0,0)
+    
 end
 
 function Actor.intersect(a, b)
@@ -81,6 +82,14 @@ end
 
 function Actor:getPosition()
   return self.position
+end
+
+function Actor:getImageWidth()
+  return self.image:getWidth()
+end
+
+function Actor:getImageHeight()
+  return self.image:getHeight() 
 end
 
 return Actor

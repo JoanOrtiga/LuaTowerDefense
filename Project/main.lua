@@ -1,21 +1,33 @@
-  local Tower = require("Classes/tower")
+sceneItems = {}
+towerMap = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}
+  
+local Tower = require("Classes/tower")
+local ShopBox = require("Classes/shopBox")
+
 
 function love.load()
   require("Data/data")
-  require("Classes/mousehandling")
+  require("Classes/mousehandling")  
   
-
+  local ShopBoxHUD = ShopBox()
+  table.insert(sceneItems, ShopBoxHUD)
   
-  sceneItems = {}
   
-  sceneItems.tower = Tower()
 end
  
 function love.update(dt)
 	player.act_y = player.act_y - ((player.act_y - player.grid_y) * player.speed * dt)
 	player.act_x = player.act_x - ((player.act_x - player.grid_x) * player.speed * dt)
   
-  sceneItems.tower:update(dt)
+  for  k,v in pairs(sceneItems) do
+    v:update(dt)
+ end
+ 
+  for k,v in pairs(towerMap) do
+    for x,z in pairs(v) do
+      z:draw()
+    end
+  end
 end
  
 function love.draw()
@@ -30,8 +42,15 @@ function love.draw()
 		end
 	end
   
-  sceneItems.tower:draw()
-  
+ for  k,v in pairs(sceneItems) do
+  v:draw()
+ end
+ 
+  for k,v in pairs(towerMap) do
+    for x,z in pairs(v) do
+      z:draw()
+    end
+  end
 end
  
 function love.keypressed(key)
@@ -45,3 +64,6 @@ function love.keypressed(key)
 			player.grid_x = player.grid_x + gridSizeX
 	end
 end
+
+
+

@@ -1,12 +1,8 @@
 local Actor = Actor or require "Lib/actor"
 local Tower = Actor:extend()
 
-function Tower:new()
-  Tower.super.new(self, "Resources/abc.png",400,500,20,1,0)
-  
-  print(Tower.super.getPosition(self))
-
-  
+function Tower:new(xTable,yTable)
+  Tower.super.new(self, "Resources/sampleTowers.png",xTable * 50 + 25 ,yTable * 50 + 25)
 end
 
 function Tower:update(dt)
@@ -14,7 +10,7 @@ function Tower:update(dt)
 end
 
 function Tower:draw()
-  Tower.super.draw(self)
+  Tower.super.draw(self) 
 end
 
 return Tower

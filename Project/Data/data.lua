@@ -17,6 +17,8 @@ map = {
     { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 	}
   
+--towerMap = {}
+  
   gridSizeX = 50
   gridSizeY = 50
   
