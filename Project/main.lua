@@ -1,6 +1,6 @@
 sceneItems = {}
 towerMap = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}
-clickedSquare = { x = 0, y = 0 }
+clickedSquare = { x = 1, y = 1 }
   
 local Tower = Tower or require("Classes/tower")
 local ShopBox = ShopBox or require("Classes/HUD/shopBox")
