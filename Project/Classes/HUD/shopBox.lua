@@ -26,11 +26,9 @@ function ShopBox:clickedButton(self)
     local typeTower = ShopBox.mouseIntersecs(self)
     
     if(typeTower == "defaultTower") then
-      
-      if(towerMap[clickedSquare.x][clickedSquare.y] == nil) then
+      if(towerMap[clickedSquare.x][clickedSquare.y] == nil and map[clickedSquare.x][clickedSquare.y] == 1) then
         local Towerx = Tower(clickedSquare.x-1,clickedSquare.y-1)
         towerMap[clickedSquare.x][clickedSquare.y] = Towerx
-        print("hola")
       end
     elseif(typeTower == "tower2") then
       print("tower2")
