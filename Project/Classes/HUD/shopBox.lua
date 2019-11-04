@@ -10,6 +10,7 @@ function ShopBox:new()
   
   self.numberOfTowersV = 5
   self.numberOfTowersH = 2
+ 
 end
 
 function ShopBox:update(dt)
@@ -25,8 +26,8 @@ function ShopBox:clickedButton(self)
     local typeTower = ShopBox.mouseIntersecs(self)
     
     if(typeTower == "defaultTower") then
-      if(towerMap[clickedSquare.x][clickedSquare.y] == nil and map[clickedSquare.x][clickedSquare.y] == 1)then
-        local Towerx = Tower(clickedSquare.x,clickedSquare.y)
+      if(towerMap[clickedSquare.x][clickedSquare.y] == nil and map[clickedSquare.x][clickedSquare.y] == 1) then
+        local Towerx = Tower(clickedSquare.x-1,clickedSquare.y-1)
         towerMap[clickedSquare.x][clickedSquare.y] = Towerx
       end
     elseif(typeTower == "tower2") then
