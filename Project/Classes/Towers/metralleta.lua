@@ -1,10 +1,10 @@
-local Actor = Actor or require "Lib/actor"
-local Metralleta = Metralleta:extend()
+local Tower = Tower or require "Classes/Towers/tower"
+local Metralleta = Tower:extend()
 
-function Metralleta:new()
-  Metralleta.new(self)
+function Metralleta:new(xTable,yTable)
+  Tower.super.new(self, nil, xTable, yTable, 40)
   
-  self.image = --aplicar imatge
+  --self.image = --aplicar imatge
   
   self.cost = 20
   self.radiAtac = 7

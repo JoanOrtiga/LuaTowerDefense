@@ -8,7 +8,7 @@ function Francotirador:new()
   
   self.cost = 30
   self.radiAtac = 10
-  self.speedAtac = 2--s
+  self.speedAtac = 2
   self.damageAtac = 35
 end
 
