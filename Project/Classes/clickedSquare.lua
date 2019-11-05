@@ -10,7 +10,11 @@ function ClickedSquare:update(dt)
 end
 
 function ClickedSquare:draw()
-  ClickedSquare.super.draw(self) 
+  if(map[clickedSquare.x][clickedSquare.y] == 1) then 
+    love.graphics.setColor(0,0,0,100)
+    ClickedSquare.super.draw(self) 
+    love.graphics.setColor(255,255,255,100)
+  end
 end
 
 return ClickedSquare

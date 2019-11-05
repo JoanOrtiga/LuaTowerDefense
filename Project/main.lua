@@ -7,6 +7,13 @@ local ShopBox = ShopBox or require("Classes/HUD/shopBox")
 local BuyTower1 = BuyTower1 or require("Classes/HUD/ShopButtons/buyTower1")
 local ClickedSquare = ClickedSquare or require("Classes/clickedSquare")
 local Background = Background or require("Classes/Background")
+local Enemy = Enemy or require("Classes/Enemies/enemy")
+local Timer = Timer or require("Lib/timer")
+
+function spawnEnemy()
+  local enemy = Enemy(nil, 500)
+  table.insert(sceneItems, enemy)
+end
 
 
 function love.load()
@@ -17,17 +24,18 @@ function love.load()
   table.insert(sceneItems, ShopBoxHUD)
   
   Backgrounds = Background()
-
   
   sceneItems.ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
   
-  
-
+  sceneItems.timers = Timer(0.2,spawnEnemy,true)
 end
  
 function love.update(dt)
   for  k,v in pairs(sceneItems) do
     v:update(dt)
+    if(v.delete) then
+        table.remove(sceneItems, k)
+    end
  end
  
   for k,v in pairs(towerMap) do
@@ -51,7 +59,7 @@ function love.draw()
 		end
 	end
   
-    love.graphics.setColor(255,255,255,100)
+  love.graphics.setColor(255,255,255,100)
 
   
  for  k,v in pairs(sceneItems) do

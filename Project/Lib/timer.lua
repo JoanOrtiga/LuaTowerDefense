@@ -1,4 +1,4 @@
-Object = Object or require "Scripts/object"
+Object = Object or require "Lib/object"
 Timer = Object:extend()
 
 function Timer:new(time, fun, rp)

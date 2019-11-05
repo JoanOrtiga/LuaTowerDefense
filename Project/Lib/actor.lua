@@ -14,6 +14,7 @@ function Actor:new(image,x,y,speed,fx,fy, ox, oy, sx,sy)
     self.origin = Vector.new(ox or self.image:getWidth()/2  , oy or self.image:getHeight()/2)
     self.height = self.image:getHeight()
     self.width  = self.image:getWidth()
+    self.delete = false
 end
 
 function Actor:update(dt)
@@ -58,38 +59,6 @@ end
         --tble.insert(listOfBullets, Bullet(self.x, self.y))
         table.insert(actorList,Actor())
     end
-end
-
-function Actor:getPosition()
-  return self.position
-end
-
-function Actor:getOrigin()
-  return self.origin
-end
-
-function Actor:getRotation()
-  return self.rotation
-end
-
-function Actor:getScale()
-  return self.position
-end
-
-function Actor:getPosition()
-  return self.position
-end
-
-function Actor:getPosition()
-  return self.position
-end
-
-function Actor:getImageWidth()
-  return self.image:getWidth()
-end
-
-function Actor:getImageHeight()
-  return self.image:getHeight() 
 end
 
 return Actor
