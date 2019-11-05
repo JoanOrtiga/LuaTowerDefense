@@ -1,8 +1,8 @@
-local Actor = Actor or require "Lib/actor"
+local Actor = Actor or require "Classes/Towers/tower"
 local AeO = AeO:extend()
 
 function AeO:new()
-  AeO.new(self)
+  AeO.super.new(self, nil, xTable, yTable)
   
   self.image = --aplicar imatge
   

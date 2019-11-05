@@ -2,7 +2,7 @@ local Tower = Tower or require "Classes/Towers/tower"
 local Metralleta = Tower:extend()
 
 function Metralleta:new(xTable,yTable)
-  Tower.super.new(self, nil, xTable, yTable, 40)
+  Tower.super.new(self, nil, xTable, yTable, 40) --nil per image
   
   --self.image = --aplicar imatge
   

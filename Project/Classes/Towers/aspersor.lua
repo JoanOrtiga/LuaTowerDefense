@@ -1,8 +1,8 @@
-local Actor = Actor or require "Lib/actor"
+local Actor = Actor or require "Classes/Towers/tower"
 local Aspersor = Aspersor:extend()
 
 function Aspersor:new()
-  Aspersor.new(self)
+  Aspersor.super.new(self, nil, xTable, yTable)
   
   self.image = --aplicar imatge
   
