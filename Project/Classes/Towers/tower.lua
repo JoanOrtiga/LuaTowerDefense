@@ -15,4 +15,3 @@ function Tower:draw()
 end
 
 return Tower
-
