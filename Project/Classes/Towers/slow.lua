@@ -1,8 +1,8 @@
-local Actor = Actor or require "Lib/actor"
+local Actor = Actor or require "Classes/Towers/tower"
 local Slow = Slow:extend()
 
 function Slow:new()
-  Slow.new(self)
+  Slow.super.new(self, nil, xTable, yTable)
   
   self.image = --aplicar imatge
   
