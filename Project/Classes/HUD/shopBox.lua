@@ -2,7 +2,7 @@ local Actor = Actor or require "Lib/actor"
 local Vector = Vector or require "Lib/vector"
 local ShopBox = Actor:extend()
 
-local Tower = Tower or require "Classes/tower"
+local Tower = Tower or require "Classes/Towers/tower"
 
 
 function ShopBox:new()
@@ -26,7 +26,7 @@ function ShopBox:clickedButton(self)
     
     if(typeTower == "defaultTower") then
       if(towerMap[clickedSquare.x][clickedSquare.y] == nil and map[clickedSquare.x][clickedSquare.y] == 1)then
-        local Towerx = Tower(clickedSquare.x,clickedSquare.y)
+        local Towerx = Tower(nil, clickedSquare.x,clickedSquare.y)
         towerMap[clickedSquare.x][clickedSquare.y] = Towerx
       end
     elseif(typeTower == "tower2") then
