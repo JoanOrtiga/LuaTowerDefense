@@ -1,5 +1,6 @@
 local Actor = Actor or require "Classes/Towers/tower"
 local Francotirador = Francotirador:extend()
+local Timer = Timer or require"Lib/Timer"
 
 function Francotirador:new()
   Francotirador.super.new(self, nil, xTable, yTable)
@@ -10,6 +11,8 @@ function Francotirador:new()
   self.radiAtac = 10
   self.speedAtac = 2
   self.damageAtac = 35
+  
+  Timer.new(self.speedAtac, , true)
 end
 
 function Francotirador:update()
