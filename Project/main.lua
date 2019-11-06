@@ -11,7 +11,7 @@ local Enemy = Enemy or require("Classes/Enemies/enemy")
 local Timer = Timer or require("Lib/timer")
 
 function spawnEnemy()
-  local enemy = Enemy(nil, 500)
+  local enemy = Enemy(nil, 1000)
   table.insert(sceneItems, enemy)
 end
 
@@ -27,10 +27,12 @@ function love.load()
   
   sceneItems.ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
   
-  sceneItems.timers = Timer(0.2,spawnEnemy,true)
+  sceneItems.timers = Timer(0.5,spawnEnemy,true)
 end
  
 function love.update(dt)
+  
+  print(#sceneItems)
   for  k,v in pairs(sceneItems) do
     v:update(dt)
     if(v.delete) then
