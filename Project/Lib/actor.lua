@@ -1,4 +1,3 @@
-
 local Vector = Vector or require "Lib/vector"
 local Object = Object or require "Lib/object"
 local Actor = Object:extend()

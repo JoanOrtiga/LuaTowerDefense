@@ -1,5 +1,6 @@
 local Actor = Actor or require "Classes/Towers/tower"
 local AeO = AeO:extend()
+local Timer = Timer or require"Lib/Timer"
 
 function AeO:new()
   AeO.super.new(self, nil, xTable, yTable)

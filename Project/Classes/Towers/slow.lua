@@ -1,5 +1,6 @@
 local Actor = Actor or require "Classes/Towers/tower"
 local Slow = Slow:extend()
+local Timer = Timer or require"Lib/Timer"
 
 function Slow:new()
   Slow.super.new(self, nil, xTable, yTable)
@@ -10,6 +11,8 @@ function Slow:new()
   self.radiAtac = 5
   self.speedAtac = 4
   self.damageAtac = 80
+  
+  Timer.new(self.speedAtac, , true)
 end
 
 function Slow:update()

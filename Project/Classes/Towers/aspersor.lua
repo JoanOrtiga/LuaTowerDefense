@@ -1,5 +1,8 @@
 local Actor = Actor or require "Classes/Towers/tower"
 local Aspersor = Aspersor:extend()
+local Timer = Timer or require"Lib/Timer"
+
+local AsperBullet = AsperBullet or require()
 
 function Aspersor:new()
   Aspersor.super.new(self, nil, xTable, yTable)
@@ -10,6 +13,8 @@ function Aspersor:new()
   self.radiAtac = 10
   self.speedAtac = 0.5
   self.damageAtac = 15
+  
+  Timer.new(self.speedAtac, shoot, true)
 end
 
 function Aspersor:update()
@@ -22,6 +27,11 @@ function Aspersor:draw()
   self.position.y = 
 
   love.graphics.draw(self.image)
+end
+
+function shoot()
+  local asperbullet = AsperBullet(self.position + self.origin)
+  
 end
 
 return Aspersor
