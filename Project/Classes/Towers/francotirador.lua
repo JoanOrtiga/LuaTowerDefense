@@ -21,10 +21,8 @@ function Francotirador:update()
 end
 
 function Francotirador:draw()
-  self.position.x = 
-  self.position.y = 
+    Francotirador.super.draw(self) 
 
-  love.graphics.draw(self.image)
 end
 
 return Francotirador

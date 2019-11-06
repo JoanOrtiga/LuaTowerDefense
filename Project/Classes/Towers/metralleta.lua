@@ -21,10 +21,8 @@ function Metralleta:update()
 end
 
 function Metralleta:draw()
-  self.position.x = 
-  self.position.y = 
+    Metralleta.super.draw(self) 
 
-  love.graphics.draw(self.image)
 end
 
 return Metralleta

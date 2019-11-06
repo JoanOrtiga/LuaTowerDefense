@@ -18,10 +18,8 @@ function AeO:update()
 end
 
 function AeO:draw()
-  self.position.x = 
-  self.position.y = 
+    AeO.super.draw(self) 
 
-  love.graphics.draw(self.image)
 end
 
 return AeO

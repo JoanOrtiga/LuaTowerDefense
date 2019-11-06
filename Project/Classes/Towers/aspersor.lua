@@ -23,10 +23,8 @@ function Aspersor:update()
 end
 
 function Aspersor:draw()
-  self.position.x = 
-  self.position.y = 
+    Aspersor.super.draw(self) 
 
-  love.graphics.draw(self.image)
 end
 
 function shoot()

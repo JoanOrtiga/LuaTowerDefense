@@ -21,10 +21,8 @@ function Slow:update()
 end
 
 function Slow:draw()
-  self.position.x = 
-  self.position.y = 
+    Slow.super.draw(self) 
 
-  love.graphics.draw(self.image)
 end
 
 return Slow
