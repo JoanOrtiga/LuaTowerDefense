@@ -5,6 +5,7 @@ function Enemy:new(image, eSpeed)
   Enemy.super.new(self, image or "Resources/sampleEnemy.png", 125,25, eSpeed)
   self.forward.x = 0
   self.forward.y = 1
+  
 end
 
 function Enemy:update(dt)

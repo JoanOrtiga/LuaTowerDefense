@@ -14,9 +14,6 @@ function hudButton:draw()
 end
 
 function hudButton:isPressed()
-  
-  local x, y = love.mouse.getPosition();
-  
   if love.mouse.isDown(1) and hudButton.intersectsMouse(self,love.mouse) then
     return true
   end
@@ -28,17 +25,13 @@ function hudButton:intersectsMouse(b)
 
     local ax = self.position.x
     local ay = self.position.y
-    local aw = self.width
-    local ah = self.height
-
-    print(ax * self.scale.x)
-
+    local aw = self.width * self.scale.x
+    local ah = self.height * self.scale.y
+    
     local bx = b.getX()
     local by = b.getY()
     local bw = 1
     local bh = 1
-    
-    print(bx .. by)
 
    if ax+aw > bx and ax < bx+bw and ay+ah > by and ay < by+bh then
         return true

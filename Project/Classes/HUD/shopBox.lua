@@ -2,7 +2,10 @@ local Actor = Actor or require "Lib/actor"
 local Vector = Vector or require "Lib/vector"
 local ShopBox = Actor:extend()
 
-local Tower = Tower or require "Classes/Towers/tower"
+local Tower = Tower or require "Classes/Towers/archerTower"
+local buyArcherTower = buyArcherTower or require "Classes/HUD/ShopButtons/buyArcherTower"
+local buyMageTower = buyMageTower or require "Classes/HUD/ShopButtons/buyMageTower"
+
 
 
 function ShopBox:new()
@@ -10,10 +13,16 @@ function ShopBox:new()
   
   self.numberOfTowersV = 5
   self.numberOfTowersH = 2
+  
+  local BuyArcherTower = buyArcherTower(self.position.x + 10, self.position.y + 10)
+  table.insert(sceneItems, BuyArcherTower)
+  
+  local BuyMageTower = buyMageTower(self.position.x + 105,self.position.y + 10)
+  table.insert(sceneItems, BuyMageTower)
 end
 
 function ShopBox:update(dt)
-  ShopBox.clickedButton(self)
+ -- ShopBox.clickedButton(self)
 end
 
 function ShopBox:draw()
@@ -26,7 +35,7 @@ function ShopBox:clickedButton(self)
     
     if(typeTower == "defaultTower") then
       if(towerMap[clickedSquare.x][clickedSquare.y] == nil and map[clickedSquare.x][clickedSquare.y] == 1)then
-        local Towerx = Tower(nil, clickedSquare.x,clickedSquare.y)
+        local Towerx = Tower(clickedSquare.x,clickedSquare.y)
         towerMap[clickedSquare.x][clickedSquare.y] = Towerx
       end
     elseif(typeTower == "tower2") then
