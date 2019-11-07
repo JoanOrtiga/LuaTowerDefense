@@ -9,8 +9,9 @@ function Tower:new(image, xTable,yTable, cost, radius)
   self.cost = cost or 20
   self.radius = radius or 50
   self.level = 1
-  self.attackSpeed = 0.5
+  self.attackSpeed = 1
   self.timer = self.attackSpeed
+  self.attackDmg = 50
   self.shooting = false
 end
 
@@ -21,14 +22,16 @@ function Tower:update(dt)
         self.shooting = true
         local bullet = Bullet(self.position, k)
         table.insert(bullets, bullet)
-      else
-        self.timer = self.timer - dt
-        
-        if(self.timer <= 0) then
-          self.shooting = false
-          self.timer = self.attackSpeed
-        end
+        break
       end
+    end
+  end
+  
+  if(self.shooting == true) then
+    self.timer = self.timer - dt
+    if(self.timer <= 0) then
+      self.shooting = false
+      self.timer = self.attackSpeed
     end
   end
 end

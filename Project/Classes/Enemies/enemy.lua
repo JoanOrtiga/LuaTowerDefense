@@ -1,20 +1,29 @@
 local Actor = Actor or require "Lib/actor"
 local Enemy = Actor:extend()
 
+local enemyHealthBar = enemyHealthBar or require "Classes/Enemies/enemyHealthBar"
+
 function Enemy:new(image, eSpeed)
-  Enemy.super.new(self, image or "Resources/sampleEnemy.png", 125,25, eSpeed)
+  Enemy.super.new(self, image or "Resources/skeletonEnemy.png", 125,25, eSpeed)
   self.forward.x = 0
   self.forward.y = 1
   
+  self.health = 300
+  
+  self.healthBar = enemyHealthBar(self.position, self.health)
 end
 
 function Enemy:update(dt)
   Enemy.super.update(self, dt)
   Enemy.move3(self)
+  
+  self.healthBar.update(self.healthBar, dt, self.position, self.health)
 end
 
 function Enemy:draw()
   Enemy.super.draw(self) 
+  
+ self.healthBar:draw(self.healthBar)
 end
 
 
@@ -30,9 +39,11 @@ function Enemy:move3()
     if tonumber(string.format("%.2f",self.position.x / 50)) > math.floor(self.position.x / 50) + 0.51 then
       if map[fx + 1][fy] == 1 then
         if map[fx][fy + 1] == 0 then
+          self.rot = self.rot + math.rad(90)
           self.forward.x = 0
           self.forward.y = 1
         elseif map[fx][fy - 1] == 0 then
+          self.rot = self.rot + math.rad(-90)
           self.forward.x = 0
           self.forward.y = -1
         end
@@ -42,9 +53,11 @@ function Enemy:move3()
     if tonumber(string.format("%.2f",self.position.x / 50)) < math.floor(self.position.x/ 50) + 0.49 then
       if map[fx - 1][fy] == 1 then
         if map[fx][fy + 1] == 0 then
+          self.rot = self.rot + math.rad(-90)
           self.forward.x = 0
           self.forward.y = 1
         elseif map[fx][fy - 1] == 0 then
+          self.rot = self.rot + math.rad(90)
           self.forward.x = 0
           self.forward.y = -1
         end
@@ -54,9 +67,11 @@ function Enemy:move3()
     if tonumber(string.format("%.2f",self.position.y / 50)) > math.floor(self.position.y / 50) + 0.51 then
       if map[fx][fy + 1] == 1 then
         if map[fx + 1][fy] == 0 then
+          self.rot = self.rot + math.rad(-90)
           self.forward.x = 1
           self.forward.y = 0
         elseif map[fx - 1][fy] == 0 then
+          self.rot = self.rot + math.rad(90)
           self.forward.x = -1
           self.forward.y = 0
         end
@@ -66,9 +81,11 @@ function Enemy:move3()
     if tonumber(string.format("%.2f",self.position.y / 50)) < math.floor(self.position.y/ 50) + 0.49 then
       if map[fx][fy - 1] == 1 then
         if map[fx + 1][fy] == 0 then
+          self.rot = self.rot + math.rad(90)
           self.forward.x = 1
           self.forward.y = 0
         elseif map[fx - 1][fy] == 0 then
+          self.rot = self.rot + math.rad(-90)
           self.forward.x = -1
           self.forward.y = 0
         end
