@@ -6,8 +6,8 @@ function love.mousepressed( x, y, button, istouch, presses )
     clickedSquare.x = fx
     clickedSquare.y = fy   
       
-    sceneItems.ClickedSqr.position.x = fx * 50 - 50
-    sceneItems.ClickedSqr.position.y = fy * 50 - 50
+    ClickedSqr.position.x = fx * 50 - 50
+    ClickedSqr.position.y = fy * 50 - 50
     
   end
 end

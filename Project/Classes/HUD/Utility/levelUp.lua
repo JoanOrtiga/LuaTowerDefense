@@ -13,6 +13,7 @@ function pauseButton:update(dt)
     pressed = true
     if(towerMap[clickedSquare.x][clickedSquare.y] ~= nil) then
       towerMap[clickedSquare.x][clickedSquare.y].level = towerMap[clickedSquare.x][clickedSquare.y].level + 1
+      towerMap[clickedSquare.x][clickedSquare.y]:changeLevel()
     end
   elseif(love.mouse.isDown(1) == false) then
     pressed = false

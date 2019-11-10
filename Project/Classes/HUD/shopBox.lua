@@ -7,6 +7,7 @@ local buyArcherTower = buyArcherTower or require "Classes/HUD/ShopButtons/buyArc
 local buyMageTower = buyMageTower or require "Classes/HUD/ShopButtons/buyMageTower"
 local pauseButton = pauseButton or require "Classes/HUD/Utility/pauseButton"
 local levelup = levelup or require "Classes/HUD/Utility/levelUp"
+local deleteTower = deleteTower or require "Classes/HUD/Utility/deleteTower"
 
 
 
@@ -27,6 +28,9 @@ function ShopBox:new()
   
    local levelUp = levelup()
   table.insert(sceneItems, levelUp)
+  
+  local DeleteTower = deleteTower()
+  table.insert(sceneItems, DeleteTower)
 end
 
 function ShopBox:update(dt)

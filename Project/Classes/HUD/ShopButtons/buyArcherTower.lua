@@ -20,7 +20,9 @@ function BuyArcherTower:draw()
   BuyArcherTower.super.draw(self)
   
   if(BuyArcherTower.super.intersectsMouse(self, love.mouse)) then
+    if(map[clickedSquare.x][clickedSquare.y] == 1)then
     love.graphics.circle("line", (clickedSquare.x-1) * 50 + 25, (clickedSquare.y-1) * 50 + 25, Data.archerTower.radius)
+    end
     BuyArcherTower.super.drawInfoOfTowers(self, Data.archerTower.attackSpeed, Data.archerTower.attackDamage, Data.archerTower.radius)
   end
   

@@ -19,7 +19,11 @@ function Metralleta:draw()
 end
 
 function Metralleta:changeLevel()
-  Metralleta.super.changeLevel()
+  Metralleta.super.changeLevel(self, self.level, lvl)
+  
+  self.radius = Data.archerTower2.radius
+  self.attackSpeed = Data.archerTower2.attackSpeed
+  self.attackDmg = Data.archerTower2.attackDamage
 end
 
 return Metralleta

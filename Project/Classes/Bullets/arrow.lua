@@ -1,8 +1,8 @@
 local Bullet = Bullet or require "Classes/Bullets/bullet"
 local Arrow = Bullet:extend()
 
-function Arrow:new(position, enemy)
-  Arrow.super.new(self, "Resources/arrow_bullet.png", position, enemy)
+function Arrow:new(position, enemy, damage)
+  Arrow.super.new(self, "Resources/arrow_bullet.png", position, enemy, damage)
 end
 
 function Arrow:update(dt)

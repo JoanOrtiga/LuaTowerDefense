@@ -34,7 +34,7 @@ function love.load()
   
   Backgrounds = Background()
   
-  sceneItems.ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
+  ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
   
   sceneItems.timers = Timer(1,spawnEnemy,true)
 end
@@ -53,6 +53,9 @@ function love.update(dt)
   for k,v in pairs(towerMap) do
     for x,z in pairs(v) do
       z:update(dt)
+      if(z.delete) then
+        towerMap[k][x] = nil
+      end
     end
   end
   
@@ -70,6 +73,7 @@ function love.update(dt)
     end
   end
 
+  ClickedSqr:update(dt)
   end
 end
  
@@ -77,6 +81,8 @@ function love.draw()
   
   Backgrounds:draw()
   
+    ClickedSqr:draw()
+ 
   
   love.graphics.setColor(0,0,0,100)
 	for x=1, #map do
@@ -90,8 +96,7 @@ function love.draw()
 
   ShopBoxHUD:draw()
 
-  
- 
+
   for k,v in pairs(towerMap) do
     for x,z in pairs(v) do
       z:draw()

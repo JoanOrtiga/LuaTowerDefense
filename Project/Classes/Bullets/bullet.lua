@@ -1,17 +1,15 @@
 local Actor = Actor or require "Lib/actor"
 local Bullet = Actor:extend()
 
-function Bullet:new(image, position, enemy)
+function Bullet:new(image, position, enemy, damage)
   Bullet.super.new(self, image or "Resources/sampleBullet.png", position.x, position.y, 200, nil,nil,nil,nil,1.5,1.5)
   
   self.enemyToChase = enemy;
   self.enemy = enemies[self.enemyToChase]
-  self.bulletSpeed = 3;
-  self.damage = 50
+  self.damage = damage or 25
 end
 
 function Bullet:update(dt)
-  print(self.enemy.id)
   Bullet.super.update(self,dt)
   
   if(enemies[self.enemyToChase] == nil or self.enemy.id ~= enemies[self.enemyToChase].id) then

@@ -39,11 +39,20 @@ Data.skeletonEnemy.health = 100
 Data.skeletonEnemy.speed = 100
   
 --TOWERS
+
+---archerTower LVL 1---
 Data.archerTower = {}
 Data.archerTower.cost = 20
 Data.archerTower.radius = 50 -- en pixels
-Data.archerTower.attackDamage = 10
+Data.archerTower.attackDamage = 50
 Data.archerTower.attackSpeed = 1
+
+---archerTower LVL 2---
+Data.archerTower2 = {}
+Data.archerTower2.cost = 20
+Data.archerTower2.radius = 60 -- en pixels
+Data.archerTower2.attackDamage = 100
+Data.archerTower2.attackSpeed = 0.9
 
   
   

@@ -14,6 +14,8 @@ function Tower:new(image, xTable,yTable, cost, radius, attackSpeed, Dmg)
   self.timer = self.attackSpeed
   self.attackDmg = Dmg or 50
   self.shooting = false
+  
+  self.delete = false
 end
 
 function Tower:update(dt, typeBullet)
@@ -36,9 +38,10 @@ function Tower:update(dt, typeBullet)
   end
 end
 
+
 function Tower:createBullets(k, typeBullet)
   if(typeBullet == "archer") then
-    local bullet = ArrowBullet(self.position, k)
+    local bullet = ArrowBullet(self.position, k, self.attackDmg)
     table.insert(bullets, bullet)
   end
  
@@ -54,7 +57,8 @@ function Tower:findEnemy(circleB)
 end
 
 function Tower:changeLevel(level, art)
-  if(level == 2)
-    art[level]
+  if(level == 2) then
+    self.image = love.graphics.newImage(art[level])
   end
+end
 return Tower
