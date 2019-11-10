@@ -1,5 +1,5 @@
-local HudButton = HudButton or require "Classes/HUD/hudButton"
-local BuyArcherTower = HudButton:extend()
+local shopButton = shopButton or require "Classes/HUD/ShopButtons/shopButton"
+local BuyArcherTower = shopButton:extend()
 local Tower = Tower or require "Classes/Towers/archerTower"
 
 function BuyArcherTower:new(posX, posY)
@@ -18,6 +18,12 @@ end
 
 function BuyArcherTower:draw()
   BuyArcherTower.super.draw(self)
+  
+  if(BuyArcherTower.super.intersectsMouse(self, love.mouse)) then
+    love.graphics.circle("line", (clickedSquare.x-1) * 50 + 25, (clickedSquare.y-1) * 50 + 25, Data.archerTower.radius)
+    BuyArcherTower.super.drawInfoOfTowers(self, Data.archerTower.attackSpeed, Data.archerTower.attackDamage, Data.archerTower.radius)
+  end
+  
 end
 
 

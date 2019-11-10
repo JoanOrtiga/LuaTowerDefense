@@ -2,26 +2,26 @@ local Actor = Actor or require "Lib/actor"
 local Timer = Timer or require "Lib/timer"
 local Tower = Actor:extend()
 
-local Bullet = Bullet or require "Classes/Bullets/bullet"
+local ArrowBullet = ArrowBullet or require "Classes/Bullets/arrow"
 
-function Tower:new(image, xTable,yTable, cost, radius)
+function Tower:new(image, xTable,yTable, cost, radius, attackSpeed, Dmg)
   Tower.super.new(self, image or "Resources/sampleTowers.png",xTable * 50 - 50 + 25,yTable * 50 - 50 + 25)
+  
   self.cost = cost or 20
   self.radius = radius or 50
   self.level = 1
-  self.attackSpeed = 1
+  self.attackSpeed = attackSpeed or 1
   self.timer = self.attackSpeed
-  self.attackDmg = 50
+  self.attackDmg = Dmg or 50
   self.shooting = false
 end
 
-function Tower:update(dt)
+function Tower:update(dt, typeBullet)
   for k,v in pairs(enemies) do
     if(Tower.findEnemy(self, v.position)) then
       if(self.shooting == false) then
         self.shooting = true
-        local bullet = Bullet(self.position, k)
-        table.insert(bullets, bullet)
+        Tower.createBullets(self, k, typeBullet)
         break
       end
     end
@@ -36,8 +36,12 @@ function Tower:update(dt)
   end
 end
 
-function Tower:createBullets(position, k)
-  
+function Tower:createBullets(k, typeBullet)
+  if(typeBullet == "archer") then
+    local bullet = ArrowBullet(self.position, k)
+    table.insert(bullets, bullet)
+  end
+ 
 end
 
 function Tower:draw()
@@ -49,4 +53,8 @@ function Tower:findEnemy(circleB)
   return dist <= (self.radius + 50)^2
 end
 
+function Tower:changeLevel(level, art)
+  if(level == 2)
+    art[level]
+  end
 return Tower

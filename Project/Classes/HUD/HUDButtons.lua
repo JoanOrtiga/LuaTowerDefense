@@ -10,7 +10,7 @@ function hudButton:update(dt)
 end
 
 function hudButton:draw()
-  hudButton.super.draw(self)
+  hudButton.super.draw(self)  
 end
 
 function hudButton:isPressed()
@@ -40,6 +40,5 @@ function hudButton:intersectsMouse(b)
         
     end
 end
-
 
 return hudButton

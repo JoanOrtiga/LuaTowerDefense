@@ -5,6 +5,8 @@ local ShopBox = Actor:extend()
 local Tower = Tower or require "Classes/Towers/archerTower"
 local buyArcherTower = buyArcherTower or require "Classes/HUD/ShopButtons/buyArcherTower"
 local buyMageTower = buyMageTower or require "Classes/HUD/ShopButtons/buyMageTower"
+local pauseButton = pauseButton or require "Classes/HUD/Utility/pauseButton"
+local levelup = levelup or require "Classes/HUD/Utility/levelUp"
 
 
 
@@ -19,6 +21,12 @@ function ShopBox:new()
   
   local BuyMageTower = buyMageTower(self.position.x + 105,self.position.y + 10)
   table.insert(sceneItems, BuyMageTower)
+  
+  local PauseButton = pauseButton()
+  table.insert(sceneItems, PauseButton)
+  
+   local levelUp = levelup()
+  table.insert(sceneItems, levelUp)
 end
 
 function ShopBox:update(dt)
@@ -39,7 +47,7 @@ function ShopBox:clickedButton(self)
         towerMap[clickedSquare.x][clickedSquare.y] = Towerx
       end
     elseif(typeTower == "tower2") then
-      print("tower2")
+    
     end
     
     return

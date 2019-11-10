@@ -29,3 +29,21 @@ map = {
 		act_y = 0,
 		speed = 10
 	}
+  
+  
+Data = {}
+
+--ENEMIEs
+Data.skeletonEnemy = {}
+Data.skeletonEnemy.health = 100
+Data.skeletonEnemy.speed = 100
+  
+--TOWERS
+Data.archerTower = {}
+Data.archerTower.cost = 20
+Data.archerTower.radius = 50 -- en pixels
+Data.archerTower.attackDamage = 10
+Data.archerTower.attackSpeed = 1
+
+  
+  

@@ -1,4 +1,4 @@
-local HudButton = HudButton or require "Classes/HUD/hudButton"
+local HudButton = HudButton or require "Classes/HUD/ShopButtons/shopButton"
 local BuyMageTower = HudButton:extend()
 local Tower = Tower or require "Classes/Towers/mageTower"
 

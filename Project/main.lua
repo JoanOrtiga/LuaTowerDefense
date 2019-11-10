@@ -3,25 +3,32 @@ towerMap = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}}
 enemies = {}
 bullets = {}
 clickedSquare = { x = 1, y = 1 }
+
+
+pauseGame = false
   
 local Tower = Tower or require("Classes/Towers/tower")
 local ShopBox = ShopBox or require("Classes/HUD/shopBox")
 local BuyTower1 = BuyTower1 or require("Classes/HUD/ShopButtons/buyArcherTower")
 local ClickedSquare = ClickedSquare or require("Classes/clickedSquare")
 local Background = Background or require("Classes/Background")
-local Enemy = Enemy or require("Classes/Enemies/enemy")
+local Enemy = Enemy or require("Classes/Enemies/skeleton")
 local Timer = Timer or require("Lib/timer")
 
+require("Data/data")
+
 function spawnEnemy()
-  local enemy = Enemy(nil, 300)
+  local enemy = Enemy(nil, 125, 25)
   table.insert(enemies, enemy)
 end
 
 
 function love.load()
-  require("Data/data")
   require("Classes/mousehandling")  
-  
+ 
+  sampleFont = love.graphics.newFont('Resources/Fonts/pong.ttf', 15)
+  love.graphics.setFont(sampleFont)
+ 
   ShopBoxHUD = ShopBox()
   --table.insert(sceneItems, ShopBoxHUD)
   
@@ -29,10 +36,12 @@ function love.load()
   
   sceneItems.ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
   
-  sceneItems.timers = Timer(0.5,spawnEnemy,true)
+  sceneItems.timers = Timer(1,spawnEnemy,true)
 end
  
 function love.update(dt)
+  
+  if(pauseGame == false) then
   
   for  k,v in pairs(sceneItems) do
     v:update(dt)
@@ -49,6 +58,9 @@ function love.update(dt)
   
   for k,v in pairs(enemies) do
     v:update(dt)
+    if(v.delete) then
+        table.remove(enemies, k)
+    end
   end
   
   for k,v in pairs(bullets) do
@@ -56,6 +68,8 @@ function love.update(dt)
     if(v.delete) then
         table.remove(bullets, k)
     end
+  end
+
   end
 end
  
@@ -72,15 +86,11 @@ function love.draw()
 			end
 		end
 	end
-  
   love.graphics.setColor(255,255,255,100)
 
-ShopBoxHUD:draw()
+  ShopBoxHUD:draw()
 
   
- for  k,v in pairs(sceneItems) do
-  v:draw()
- end
  
   for k,v in pairs(towerMap) do
     for x,z in pairs(v) do
@@ -95,5 +105,11 @@ ShopBoxHUD:draw()
   for k,v in pairs(bullets) do
     v:draw()
   end
+  
+  
+  for  k,v in pairs(sceneItems) do
+  v:draw()
+ end
+ 
 end
 
