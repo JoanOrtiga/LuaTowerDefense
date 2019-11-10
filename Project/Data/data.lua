@@ -43,7 +43,7 @@ Data.skeletonEnemy.speed = 100
 ---archerTower LVL 1---
 Data.archerTower = {}
 Data.archerTower.cost = 20
-Data.archerTower.radius = 50 -- en pixels
+Data.archerTower.radius = 150 -- en pixels
 Data.archerTower.attackDamage = 50
 Data.archerTower.attackSpeed = 1
 

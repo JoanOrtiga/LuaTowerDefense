@@ -15,12 +15,11 @@ end
 
 function HealthBar:draw()
   love.graphics.setColor(150,150,150,100)
-  love.graphics.rectangle("fill", self.position.x-2, self.position.y-2, 54,14)
+  --love.graphics.rectangle("fill", self.position.x-2, self.position.y-2, 54,14)
+  love.graphics.rectangle("fill", self.position.x, self.position.y, 50,10)
   love.graphics.setColor(255,0,0,100)
   love.graphics.rectangle("fill", self.position.x, self.position.y, 50 * (self.health/self.maxHealth),10)
   love.graphics.setColor(255,255,255,100)
-      
-
 end
 
 return HealthBar

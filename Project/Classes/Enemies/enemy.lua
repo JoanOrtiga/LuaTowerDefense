@@ -1,12 +1,12 @@
 local Actor = Actor or require "Lib/actor"
 local Enemy = Actor:extend()
 
-ids = 0
+local ids = 0
 
 local enemyHealthBar = enemyHealthBar or require "Classes/Enemies/enemyHealthBar"
 
 function Enemy:new(image, posX, posY, speed, health)
-  Enemy.super.new(self, image or "Resources/skeletonEnemy.png", posX or 125, posY or 25, speed or 200)
+  Enemy.super.new(self, image or "Resources/sampleEnemy.png", posX or 125, posY or 25, speed or 200)
   
   self.forward.x = 0
   self.forward.y = 1
@@ -17,6 +17,10 @@ function Enemy:new(image, posX, posY, speed, health)
   
   self.id = ids + 1
   ids = ids + 1
+  
+  if(ids > 200) then
+    ids = 0
+  end
 end
 
 function Enemy:update(dt)
@@ -101,7 +105,8 @@ function Enemy:move3()
   end
   
    if map[fx][fy] == 3 or map[fx][fy] == 3 and (tonumber(string.format("%.1f",self.position.x / 50)) == math.floor(self.position.x / 50) + 0.5 and (tonumber(string.format("%.1f",self.position.y / 50)) == math.floor(self.position.y / 50) + 0.5)) then
-        self.delete = true
+     Round.PlayerHP = Round.PlayerHP - 1
+     self.delete = true
    end  
    
    if self.forward.x == 1 or self.forward.x == -1 then

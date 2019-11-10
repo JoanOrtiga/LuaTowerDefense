@@ -2,7 +2,7 @@ local Actor = Actor or require "Lib/actor"
 local Bullet = Actor:extend()
 
 function Bullet:new(image, position, enemy, damage)
-  Bullet.super.new(self, image or "Resources/sampleBullet.png", position.x, position.y, 200, nil,nil,nil,nil,1.5,1.5)
+  Bullet.super.new(self, image or "Resources/sampleBullet.png", position.x, position.y, 500, nil,nil,nil,nil,1.5,1.5)
   
   self.enemyToChase = enemy;
   self.enemy = enemies[self.enemyToChase]
@@ -12,7 +12,17 @@ end
 function Bullet:update(dt)
   Bullet.super.update(self,dt)
   
-  if(enemies[self.enemyToChase] == nil or self.enemy.id ~= enemies[self.enemyToChase].id) then
+  print(self.enemy.id .. "   " .. enemies[self.enemyToChase].id)
+  
+  if(self.enemy.id ~= enemies[self.enemyToChase].id) then
+    for k,v in pairs(enemies) do
+      if(v.id == self.enemy.id) then
+        self.enemyToChase = k
+      end
+    end
+  end
+  
+  if(enemies[self.enemyToChase] == nil) then
     self.delete = true
   else
     Bullet.chaseEnemy(self)
@@ -31,7 +41,7 @@ function Bullet:update(dt)
   --[[if(enemies[self.enemyToChase].id ~= self.enemy.id) then
     self.delete = true
   end]]
-end
+end 
 
 function Bullet:draw()
   Bullet.super.draw(self)

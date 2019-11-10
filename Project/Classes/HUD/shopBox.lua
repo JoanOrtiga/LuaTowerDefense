@@ -8,6 +8,8 @@ local buyMageTower = buyMageTower or require "Classes/HUD/ShopButtons/buyMageTow
 local pauseButton = pauseButton or require "Classes/HUD/Utility/pauseButton"
 local levelup = levelup or require "Classes/HUD/Utility/levelUp"
 local deleteTower = deleteTower or require "Classes/HUD/Utility/deleteTower"
+local NextRound = NextRound or require "Classes/HUD/Utility/nextRound"
+local MainButton = MainButton or require "Classes/HUD/Utility/goToMenu"
 
 
 
@@ -31,6 +33,13 @@ function ShopBox:new()
   
   local DeleteTower = deleteTower()
   table.insert(sceneItems, DeleteTower)
+  
+  local nextRound = NextRound()
+  table.insert(sceneItems, nextRound)
+  
+  local mainButton = MainButton()
+  table.insert(sceneItems, mainButton)
+
 end
 
 function ShopBox:update(dt)
@@ -39,6 +48,11 @@ end
 
 function ShopBox:draw()
   ShopBox.super.draw(self)
+  
+    love.graphics.setFont(sampleFont2)
+  love.graphics.print("HP: " .. Round.PlayerHP,825,460,nil, 1,1)
+    love.graphics.setFont(sampleFont)
+
 end
 
 function ShopBox:clickedButton(self)

@@ -1,5 +1,5 @@
-local Vector = Vector or require "Lib/vector"
 local Object = Object or require "Lib/object"
+local Vector = Vector or require "Lib/vector"
 local Actor = Object:extend()
 Actor.position = Vector.new()
 

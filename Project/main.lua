@@ -4,7 +4,6 @@ enemies = {}
 bullets = {}
 clickedSquare = { x = 1, y = 1 }
 
-
 pauseGame = false
   
 local Tower = Tower or require("Classes/Towers/tower")
@@ -14,34 +13,39 @@ local ClickedSquare = ClickedSquare or require("Classes/clickedSquare")
 local Background = Background or require("Classes/Background")
 local Enemy = Enemy or require("Classes/Enemies/skeleton")
 local Timer = Timer or require("Lib/timer")
+local playButton = playButton or require("Classes/HUD/MainMenu/PlayButton")
+
+local Rounds = Rounds or require("Classes/rounds")
 
 require("Data/data")
 
-function spawnEnemy()
-  local enemy = Enemy(nil, 125, 25)
-  table.insert(enemies, enemy)
-end
+GameScene = 1
 
+function love.load()  
+        require("Classes/mousehandling")  
 
-function love.load()
-  require("Classes/mousehandling")  
- 
   sampleFont = love.graphics.newFont('Resources/Fonts/pong.ttf', 15)
+  sampleFont2 = love.graphics.newFont('Resources/Fonts/pong.ttf', 50)
   love.graphics.setFont(sampleFont)
- 
-  ShopBoxHUD = ShopBox()
-  --table.insert(sceneItems, ShopBoxHUD)
   
-  Backgrounds = Background()
-  
-  ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
-  
-  sceneItems.timers = Timer(1,spawnEnemy,true)
+  changeScene(1)
 end
  
 function love.update(dt)
   
+  if(GameScene == 1) then
+    for  k,v in pairs(sceneItems) do
+    v:update(dt)
+    if(v.delete) then
+        table.remove(sceneItems, k)
+    end
+ end
+  
+elseif(GameScene == 2) then
+  
   if(pauseGame == false) then
+  
+  Round:update(dt)
   
   for  k,v in pairs(sceneItems) do
     v:update(dt)
@@ -76,9 +80,21 @@ function love.update(dt)
   ClickedSqr:update(dt)
   end
 end
+
+  
+end
  
 function love.draw()
   
+  if(GameScene == 1) then
+    
+    for  k,v in pairs(sceneItems) do
+    v:draw()
+    end
+    
+  elseif(GameScene == 2) then
+    
+    
   Backgrounds:draw()
   
     ClickedSqr:draw()
@@ -115,6 +131,55 @@ function love.draw()
   for  k,v in pairs(sceneItems) do
   v:draw()
  end
+  end
+  
  
 end
 
+
+
+
+
+function changeScene(newScene)
+  
+  for  k,v in pairs(sceneItems) do
+    sceneItems[k] = nil
+ end
+ 
+  for k,v in pairs(towerMap) do
+    for x,z in pairs(v) do
+        towerMap[k][x] = nil
+    end
+  end
+  
+  for k,v in pairs(enemies) do
+    enemies[k] = nil
+
+  end
+  
+  for k,v in pairs(bullets) do
+    bullets[k] = nil
+  end
+  
+  if(newScene == 1) then
+    local PlayButton = playButton()
+    table.insert(sceneItems, PlayButton)
+    function love.mousepressed()
+    end
+  GameScene = 1
+elseif(newScene == 2) then
+  restartMouseHandling()
+  GameScene = 2
+
+clickedSquare = { x = 1, y = 1 }
+      ShopBoxHUD = ShopBox()
+  
+      Backgrounds = Background()
+  
+      ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
+  
+      Round = Rounds(1, 2)
+      
+  end
+  
+end
