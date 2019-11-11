@@ -22,7 +22,7 @@ function ShopBox:new()
   local BuyArcherTower = buyArcherTower(self.position.x + 10, self.position.y + 10)
   table.insert(sceneItems, BuyArcherTower)
   
-  local BuyMageTower = buyMageTower(self.position.x + 105,self.position.y + 10)
+  local BuyMageTower = buyMageTower(self.position.x + 105  + 42.5,self.position.y + 10 + 42.5)
   table.insert(sceneItems, BuyMageTower)
   
   local PauseButton = pauseButton()
@@ -52,7 +52,7 @@ function ShopBox:draw()
 
 
     love.graphics.setColor(255,255,0,100)
-    love.graphics.print("Money: " .. Round.Money, 825, 420,nil,0.5,0.5)
+    love.graphics.print("Money: " .. Round.Money, 825, 430,nil,0.5,0.5)
         love.graphics.setColor(255,255,255,100)
   love.graphics.print("HP: " .. Round.PlayerHP,825,460,nil, 1,1)
     love.graphics.setFont(sampleFont)

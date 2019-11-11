@@ -3,7 +3,7 @@ local BuyMageTower = HudButton:extend()
 local Tower = Tower or require "Classes/Towers/mageTower"
 
 function BuyMageTower:new(posX, posY)
-  BuyMageTower.super.new(self, "Resources/mageTower1.png", posX,posY, nil, nil, nil, 0,0,1.7,1.7)
+  BuyMageTower.super.new(self, "Resources/Towers/mageTower1.png", posX,posY, nil, nil, nil, nil, nil,1.7,1.7)
 end
 
 function BuyMageTower:update(dt)

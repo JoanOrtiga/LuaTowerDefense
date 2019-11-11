@@ -20,6 +20,10 @@ function Rounds:new(level)
 end
 
 function Rounds:update(dt)
+  if(self.PlayerHP < 0) then
+    changeScene(1)
+  end
+  
   self.timer = self.timer - dt
   
   if(self.timer <= 0) then

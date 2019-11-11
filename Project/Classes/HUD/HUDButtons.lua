@@ -23,8 +23,8 @@ end
 
 function hudButton:intersectsMouse(b)
 
-    local ax = self.position.x
-    local ay = self.position.y
+    local ax = self.position.x - self.origin.x
+    local ay = self.position.y - self.origin.y
     local aw = self.width * self.scale.x
     local ah = self.height * self.scale.y
     

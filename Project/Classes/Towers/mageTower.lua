@@ -1,21 +1,32 @@
 local Tower = Tower or require "Classes/Towers/tower"
-local AeO = Tower:extend()
+local AoE = Tower:extend()
+local Timer = Timer or require"Lib/timer"
 
-function AeO:new(xTable,yTable)
-  AeO.super.new(self, "Resources/mageTower1.png", xTable, yTable)
+local Bullet = Bullet or require "Classes/Bullets/arrowBullet"
+
+local lvl = {"Resources/Towers/mageTower1.png", "Resources/Towers/mageTower2.png"}
+
+function AoE:new(xTable,yTable)
+  AoE.super.new(self, lvl[1], xTable, yTable, Data.archerTower.cost, Data.archerTower.radius, Data.archerTower.attackSpeed, Data.archerTower.attackDamage, "mageTower") 
+end
+
+function AoE:update(dt)
+  AoE.super.update(self, dt, "archer")
+end
+
+function AoE:draw()
+    AoE.super.draw(self) 
+end
+
+function AoE:changeLevel()
+  if(Round.Money - Data.archerTower2.cost >= 0) then
+    Round.Money = Round.Money - Data.archerTower2.cost
+    AoE.super.changeLevel(self, self.level, lvl)
   
-  self.cost = 30
-  self.radiAtac = 30
-  self.damageAtac = 20
+    self.radius = Data.archerTower2.radius
+    self.attackSpeed = Data.archerTower2.attackSpeed
+    self.attackDmg = Data.archerTower2.attackDamage
+  end
 end
 
-function AeO:update()
-  --que dispare cada x segons
-  --que apunte a l'enemic que dispara
-end
-
-function AeO:draw()
-    AeO.super.draw(self)
-end
-
-return AeO
+return AoE

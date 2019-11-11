@@ -2,7 +2,7 @@ local Tower = Tower or require "Classes/Towers/tower"
 local Metralleta = Tower:extend()
 local Timer = Timer or require"Lib/timer"
 
-local Bullet = Bullet or require "Classes/Bullets/arrow"
+local Bullet = Bullet or require "Classes/Bullets/arrowBullet"
 
 local lvl = {"Resources/archerTower1.png", "Resources/archerTower2.png"}
 
@@ -19,7 +19,6 @@ function Metralleta:draw()
 end
 
 function Metralleta:changeLevel()
-  
   if(Round.Money - Data.archerTower2.cost >= 0) then
     Round.Money = Round.Money - Data.archerTower2.cost
     Metralleta.super.changeLevel(self, self.level, lvl)

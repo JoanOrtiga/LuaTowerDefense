@@ -13,6 +13,7 @@ function deleteButton:update(dt)
     pressed = true
     if(towerMap[clickedSquare.x][clickedSquare.y] ~= nil) then
       towerMap[clickedSquare.x][clickedSquare.y].delete = true
+      Round.Money = Round.Money + Data.destroyRevenue
     end
   elseif(love.mouse.isDown(1) == false) then
     pressed = false

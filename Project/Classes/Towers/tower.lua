@@ -2,7 +2,7 @@ local Actor = Actor or require "Lib/actor"
 local Timer = Timer or require "Lib/timer"
 local Tower = Actor:extend()
 
-local ArrowBullet = ArrowBullet or require "Classes/Bullets/arrow"
+local ArrowBullet = ArrowBullet or require "Classes/Bullets/arrowBullet"
 
 function Tower:new(image, xTable,yTable, cost, radius, attackSpeed, Dmg, typeTower)
   Tower.super.new(self, image or "Resources/sampleTowers.png",xTable * 50 - 50 + 25,yTable * 50 - 50 + 25)

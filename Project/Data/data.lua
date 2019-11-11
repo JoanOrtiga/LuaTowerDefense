@@ -41,17 +41,20 @@ Data.skeletonEnemy.revenue = 4
   
 --TOWERS
 
+--Money Revenue for destroying the tower.
+Data.destroyRevenue = 5
+
 ---archerTower LVL 1---
 Data.archerTower = {}
 Data.archerTower.cost = 20
-Data.archerTower.radius = 150 -- en pixels
+Data.archerTower.radius = 100 -- en pixels
 Data.archerTower.attackDamage = 50
 Data.archerTower.attackSpeed = 1
 
 ---archerTower LVL 2---
 Data.archerTower2 = {}
 Data.archerTower2.cost = 20
-Data.archerTower2.radius = 60 -- en pixels
+Data.archerTower2.radius = 120-- en pixels
 Data.archerTower2.attackDamage = 100
 Data.archerTower2.attackSpeed = 0.9
 
@@ -61,3 +64,12 @@ Data.mageTower.cost = 25
 Data.mageTower.radius = 150 -- en pixels
 Data.mageTower.attackDamage = 50
 Data.mageTower.attackSpeed = 1
+
+--mageTower LVL 2---
+Data.mageTower2 = {}
+Data.mageTower2.cost = 25
+Data.mageTower2.radius = 150 -- en pixels
+Data.mageTower2.attackDamage = 50
+Data.mageTower2.attackSpeed = 1
+
+
