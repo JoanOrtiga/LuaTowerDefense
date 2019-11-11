@@ -1,21 +1,30 @@
 local Tower = Tower or require "Classes/Towers/tower"
-local AeO = Tower:extend()
+local MageTower = Tower:extend()
+local Timer = Timer or require"Lib/timer"
 
-function AeO:new(xTable,yTable)
-  AeO.super.new(self, "Resources/mageTower1.png", xTable, yTable)
+--local mageBullet = mageBullet or require "Classes/Bullets/mageBullet"
+
+--local lvl = {}
+
+function MageTower:new(xTable,yTable)
+  MageTower.super.new(lvl[1], xTable, yTable, Data.mageTower.cost, Data.mageTower.radius, Data.mageTower.attackSpeed, Data.mageTower.attackDamage)
   
-  self.cost = 30
-  self.radiAtac = 30
-  self.damageAtac = 20
 end
 
-function AeO:update()
-  --que dispare cada x segons
-  --que apunte a l'enemic que dispara
+function MageTower:update()
+  ArcherTower.super.update(self, dt, "mage")
 end
 
-function AeO:draw()
-    AeO.super.draw(self)
+function MageTower:draw()
+    MageTower.super.draw(self)
 end
 
-return AeO
+function MageTower:changeLevel()
+  MageTower.super.changeLevel(self, self.level, lvl)
+  
+  self.radius = Data.mageTower2.radius
+  self.attackSpeed = Data.mageTower2.attackSpeed
+  self.attackDmg = Data.mageTower2.attackDamage
+end
+
+return MageTower
