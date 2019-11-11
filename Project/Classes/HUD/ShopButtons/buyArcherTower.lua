@@ -8,10 +8,14 @@ end
 
 function BuyArcherTower:update(dt)
   if BuyArcherTower.super.isPressed(self) then    
+    if(Round.Money - Data.archerTower.cost >= 0) then
     if(towerMap[clickedSquare.x][clickedSquare.y] == nil and map[clickedSquare.x][clickedSquare.y] == 1)then
         local Towerx = Tower(clickedSquare.x,clickedSquare.y)
         towerMap[clickedSquare.x][clickedSquare.y] = Towerx
+        Round.Money = Round.Money - Data.archerTower.cost
       end
+      
+    end
   end
   
 end

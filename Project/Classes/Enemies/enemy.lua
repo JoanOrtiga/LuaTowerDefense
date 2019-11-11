@@ -5,13 +5,15 @@ local ids = 0
 
 local enemyHealthBar = enemyHealthBar or require "Classes/Enemies/enemyHealthBar"
 
-function Enemy:new(image, posX, posY, speed, health)
+function Enemy:new(image, posX, posY, speed, health, revenue)
   Enemy.super.new(self, image or "Resources/sampleEnemy.png", posX or 125, posY or 25, speed or 200)
   
   self.forward.x = 0
   self.forward.y = 1
   
   self.health = health or 150
+  
+  self.revenue = revenue or 5
   
   self.healthBar = enemyHealthBar(self.position, self.health)
   

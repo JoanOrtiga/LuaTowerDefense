@@ -14,6 +14,7 @@ local Background = Background or require("Classes/Background")
 local Enemy = Enemy or require("Classes/Enemies/skeleton")
 local Timer = Timer or require("Lib/timer")
 local playButton = playButton or require("Classes/HUD/MainMenu/PlayButton")
+local MainMenu = MainMenu or require("Classes/HUD/MainMenu/mainMenu")
 
 local Rounds = Rounds or require("Classes/rounds")
 
@@ -162,8 +163,9 @@ function changeScene(newScene)
   end
   
   if(newScene == 1) then
-    local PlayButton = playButton()
-    table.insert(sceneItems, PlayButton)
+    local DoMainMenu = MainMenu()
+    table.insert(sceneItems, DoMainMenu)
+    
     function love.mousepressed()
     end
   GameScene = 1

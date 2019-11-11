@@ -4,9 +4,10 @@ local Tower = Actor:extend()
 
 local ArrowBullet = ArrowBullet or require "Classes/Bullets/arrow"
 
-function Tower:new(image, xTable,yTable, cost, radius, attackSpeed, Dmg)
+function Tower:new(image, xTable,yTable, cost, radius, attackSpeed, Dmg, typeTower)
   Tower.super.new(self, image or "Resources/sampleTowers.png",xTable * 50 - 50 + 25,yTable * 50 - 50 + 25)
   
+  self.typeTower = typeTower or "sampleTower"
   self.cost = cost or 20
   self.radius = radius or 50
   self.level = 1

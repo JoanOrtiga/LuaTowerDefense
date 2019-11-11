@@ -48,8 +48,12 @@ end
 
 function ShopBox:draw()
   ShopBox.super.draw(self)
-  
-    love.graphics.setFont(sampleFont2)
+      love.graphics.setFont(sampleFont2)
+
+
+    love.graphics.setColor(255,255,0,100)
+    love.graphics.print("Money: " .. Round.Money, 825, 420,nil,0.5,0.5)
+        love.graphics.setColor(255,255,255,100)
   love.graphics.print("HP: " .. Round.PlayerHP,825,460,nil, 1,1)
     love.graphics.setFont(sampleFont)
 

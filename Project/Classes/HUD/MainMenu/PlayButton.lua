@@ -4,7 +4,7 @@ local PlayButton = HUDB:extend()
 local pressed = false
 
 function PlayButton:new()
-  PlayButton.super.new(self, "Resources/HUD/nextRound.png", 400, 300, nil, nil, nil, 0,0)
+  PlayButton.super.new(self, "Resources/MainMenu/play.png", 60, 70, nil, nil, nil, 0,0)
 end
 
 function PlayButton:update(dt)

@@ -11,8 +11,10 @@ end
 
 function Bullet:update(dt)
   Bullet.super.update(self,dt)
-  
-  print(self.enemy.id .. "   " .. enemies[self.enemyToChase].id)
+
+if(enemies[self.enemyToChase] == nil) then
+    self.delete = true
+  else
   
   if(self.enemy.id ~= enemies[self.enemyToChase].id) then
     for k,v in pairs(enemies) do
@@ -22,14 +24,12 @@ function Bullet:update(dt)
     end
   end
   
-  if(enemies[self.enemyToChase] == nil) then
-    self.delete = true
-  else
+  
     Bullet.chaseEnemy(self)
     if(Bullet.super.intersect(self, enemies[self.enemyToChase])) then
       enemies[self.enemyToChase].health = enemies[self.enemyToChase].health - self.damage
-    
       if(enemies[self.enemyToChase].health <= 0) then
+        Round.Money = Round.Money + enemies[self.enemyToChase].revenue
         enemies[self.enemyToChase] = nil
       end
     self.delete = true

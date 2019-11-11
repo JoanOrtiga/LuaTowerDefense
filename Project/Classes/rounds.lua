@@ -14,6 +14,7 @@ function Rounds:new(level)
   self.RoundActive = false
   
   self.PlayerHP = 15
+  self.Money = 100
   
   Rounds.nextRound(self)
 end

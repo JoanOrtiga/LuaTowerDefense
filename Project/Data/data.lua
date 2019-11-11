@@ -37,6 +37,7 @@ Data = {}
 Data.skeletonEnemy = {}
 Data.skeletonEnemy.health = 100
 Data.skeletonEnemy.speed = 100
+Data.skeletonEnemy.revenue = 4
   
 --TOWERS
 
@@ -54,5 +55,9 @@ Data.archerTower2.radius = 60 -- en pixels
 Data.archerTower2.attackDamage = 100
 Data.archerTower2.attackSpeed = 0.9
 
-  
-  
+--mageTower LVL 1---
+Data.mageTower = {}
+Data.mageTower.cost = 25
+Data.mageTower.radius = 150 -- en pixels
+Data.mageTower.attackDamage = 50
+Data.mageTower.attackSpeed = 1
