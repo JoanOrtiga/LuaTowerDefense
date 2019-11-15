@@ -101,7 +101,7 @@ function love.draw()
     ClickedSqr:draw()
  
   
-  love.graphics.setColor(0,0,0,100)
+  love.graphics.setColor(255,255,255,0.1)
 	for x=1, #map do
 		for y=1, #map[x] do
 			if map[x][y] == 1 then

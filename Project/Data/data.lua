@@ -1,20 +1,20 @@
 map = {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-		{ 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0 },
-		{ 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0 },
-		{ 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0 },
-		{ 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0 },
-		{ 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0 },
-		{ 3, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0 },
-		{ 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 },
-		{ 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0 },
-    { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0 },
+		{ 2, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0 },
+		{ 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0 },
+		{ 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0 },
+		{ 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0 },
+		{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0 },
+		{ 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0 },
+		{ 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 },
+		{ 3, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0 },
+		{ 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
 	}
   
 --towerMap = {}
@@ -62,14 +62,63 @@ Data.archerTower2.attackSpeed = 0.9
 Data.mageTower = {}
 Data.mageTower.cost = 25
 Data.mageTower.radius = 150 -- en pixels
-Data.mageTower.attackDamage = 50
+Data.mageTower.damageRadius = 30
+Data.mageTower.attackDamage = 2
 Data.mageTower.attackSpeed = 1
 
 --mageTower LVL 2---
 Data.mageTower2 = {}
 Data.mageTower2.cost = 25
 Data.mageTower2.radius = 150 -- en pixels
-Data.mageTower2.attackDamage = 50
+Data.mageTower2.damageRadius = 30
+Data.mageTower2.attackDamage = 5
 Data.mageTower2.attackSpeed = 1
+
+--slowTower LVL 1---
+Data.slowTower1 = {}
+Data.slowTower1.cost = 55
+Data.slowTower1.radius = 150 -- en pixels
+Data.slowTower1.slow = 40
+
+--slowTower LVL 2---
+Data.slowTower2 = {}
+Data.slowTower2.cost = 20
+Data.slowTower2.radius = 150 -- en pixels
+Data.slowTower2.slow = 60
+
+---360Tower LVL 1---
+Data.t360Tower = {}
+Data.t360Tower.cost = 20
+Data.t360Tower.radius = 80-- en pixels
+Data.t360Tower.attackDamage = 30
+Data.t360Tower.attackSpeed = 0.9
+
+---360Tower LVL 2---
+Data.t360Tower2 = {}
+Data.t360Tower2.cost = 20
+Data.t360Tower2.radius = 120-- en pixels
+Data.t360Tower2.attackDamage = 30
+Data.t360Tower2.attackSpeed = 0.9
+
+---360Tower LVL 1---
+Data.t360Tower = {}
+Data.t360Tower.cost = 20
+Data.t360Tower.radius = 80-- en pixels
+Data.t360Tower.attackDamage = 30
+Data.t360Tower.attackSpeed = 0.9
+
+---SniperTower LVL 1---
+Data.sniperTower = {}
+Data.sniperTower.cost = 20
+Data.sniperTower.radius = 210-- en pixels
+Data.sniperTower.attackDamage = 90
+Data.sniperTower.attackSpeed = 2
+
+---SniperTower LVL 2---
+Data.sniperTower2 = {}
+Data.sniperTower2.cost = 20
+Data.sniperTower2.radius = 250-- en pixels
+Data.sniperTower2.attackDamage = 90
+Data.sniperTower2.attackSpeed = 2
 
 

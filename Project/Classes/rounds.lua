@@ -47,7 +47,7 @@ function Rounds:nextRound()
     elseif(self.round == 2) then
       self.RoundActive = true
       sceneItems.skeletonSpawner = Timer(1,spawnSkeleton,true)
-      sceneItems.enemySpawner = Timer(1, spawnEnemy, true)
+      --sceneItems.enemySpawner = Timer(1, spawnEnemy, true)
       self.timer = 500
     elseif(self.round == 3) then
       

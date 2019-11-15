@@ -5,6 +5,9 @@ local ShopBox = Actor:extend()
 local Tower = Tower or require "Classes/Towers/archerTower"
 local buyArcherTower = buyArcherTower or require "Classes/HUD/ShopButtons/buyArcherTower"
 local buyMageTower = buyMageTower or require "Classes/HUD/ShopButtons/buyMageTower"
+local buySlowTower = buySlowTower or require "Classes/HUD/ShopButtons/buySlowTower"
+local buy360Tower = buy360Tower or require "Classes/HUD/ShopButtons/buy360Tower"
+local buySniperTower = buySniperTower or require "Classes/HUD/ShopButtons/buySniperTower"
 local pauseButton = pauseButton or require "Classes/HUD/Utility/pauseButton"
 local levelup = levelup or require "Classes/HUD/Utility/levelUp"
 local deleteTower = deleteTower or require "Classes/HUD/Utility/deleteTower"
@@ -22,8 +25,17 @@ function ShopBox:new()
   local BuyArcherTower = buyArcherTower(self.position.x + 10, self.position.y + 10)
   table.insert(sceneItems, BuyArcherTower)
   
-  local BuyMageTower = buyMageTower(self.position.x + 105  + 42.5,self.position.y + 10 + 42.5)
+  local BuyMageTower = buyMageTower(self.position.x + 105,self.position.y + 6)
   table.insert(sceneItems, BuyMageTower)
+  
+  local BuySlowTower = buySlowTower(self.position.x + 10,self.position.y + 105)
+  table.insert(sceneItems, BuySlowTower)
+  
+  local Buy360Tower = buy360Tower(self.position.x + 105,self.position.y + 105)
+  table.insert(sceneItems, Buy360Tower)
+  
+   local BuySniperTower = buySniperTower(self.position.x + 10,self.position.y + 200)
+  table.insert(sceneItems, BuySniperTower)
   
   local PauseButton = pauseButton()
   table.insert(sceneItems, PauseButton)

@@ -1,8 +1,8 @@
 local Actor = Actor or require "Lib/actor"
 local Bullet = Actor:extend()
 
-function Bullet:new(image, position, enemy, damage)
-  Bullet.super.new(self, image or "Resources/sampleBullet.png", position.x, position.y, 500, nil,nil,nil,nil,1.5,1.5)
+function Bullet:new(image, position, enemy, damage, speed)
+  Bullet.super.new(self, image or "Resources/sampleBullet.png", position.x, position.y, speed or 400, nil,nil,nil,nil,1.5,1.5)
   
   self.enemyToChase = enemy;
   self.enemy = enemies[self.enemyToChase]
@@ -11,8 +11,8 @@ end
 
 function Bullet:update(dt)
   Bullet.super.update(self,dt)
-
-if(enemies[self.enemyToChase] == nil) then
+  
+  if(enemies[self.enemyToChase] == nil) then
     self.delete = true
   else
   
@@ -21,6 +21,9 @@ if(enemies[self.enemyToChase] == nil) then
       if(v.id == self.enemy.id) then
         self.enemyToChase = k
       end
+    end
+    if(self.enemy.id ~= enemies[self.enemyToChase].id) then
+      self.delete = true
     end
   end
   
@@ -35,12 +38,6 @@ if(enemies[self.enemyToChase] == nil) then
     self.delete = true
   end
   end
-
-  
-
-  --[[if(enemies[self.enemyToChase].id ~= self.enemy.id) then
-    self.delete = true
-  end]]
 end 
 
 function Bullet:draw()
@@ -50,7 +47,7 @@ end
 
 function Bullet:chaseEnemy()
   
-  local angle = math.atan2((enemies[self.enemyToChase].position.y - self.position.y), (enemies[self.enemyToChase].position.x - self.position.x))
+  local angle = math.atan2((enemies[self.enemyToChase].position.y - self.position.y), (enemies[self.enemyToChase].position.x - self.position.x)) 
   
     self.rot = angle
   

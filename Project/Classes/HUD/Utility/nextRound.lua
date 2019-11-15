@@ -5,7 +5,7 @@ local nextRound = HUDB:extend()
 local pressed = false
 
 function nextRound:new()
-  nextRound.super.new(self, "Resources/HUD/nextRound.png", 810, 610, nil, nil, nil, 0,0)
+  nextRound.super.new(self, "Resources/HUD/nextRound.png", 807, 610, nil, nil, nil, 0,0)
 end
 
 function nextRound:update(dt)

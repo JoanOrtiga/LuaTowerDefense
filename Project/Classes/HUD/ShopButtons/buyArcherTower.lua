@@ -3,7 +3,7 @@ local BuyArcherTower = shopButton:extend()
 local Tower = Tower or require "Classes/Towers/archerTower"
 
 function BuyArcherTower:new(posX, posY)
-  BuyArcherTower.super.new(self, "Resources/archerTower1.png", posX,posY, nil, nil, nil, 0,0,1.7,1.7)
+  BuyArcherTower.super.new(self, "Resources/HUD/ArcherTower1.png", posX,posY, nil, nil, nil, 0,0)
 end
 
 function BuyArcherTower:update(dt)

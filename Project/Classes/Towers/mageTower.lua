@@ -2,16 +2,16 @@ local Tower = Tower or require "Classes/Towers/tower"
 local AoE = Tower:extend()
 local Timer = Timer or require"Lib/timer"
 
-local Bullet = Bullet or require "Classes/Bullets/arrowBullet"
+local Bullet = Bullet or require "Classes/Bullets/mageBullet"
 
 local lvl = {"Resources/Towers/mageTower1.png", "Resources/Towers/mageTower2.png"}
 
 function AoE:new(xTable,yTable)
-  AoE.super.new(self, lvl[1], xTable, yTable, Data.archerTower.cost, Data.archerTower.radius, Data.archerTower.attackSpeed, Data.archerTower.attackDamage, "mageTower") 
+  AoE.super.new(self, lvl[1], xTable, yTable, Data.archerTower.cost, Data.archerTower.radius, Data.archerTower.attackSpeed, Data.archerTower.attackDamage, "aspersorTower") 
 end
 
 function AoE:update(dt)
-  AoE.super.update(self, dt, "archer")
+  AoE.super.update(self, dt, "mage")
 end
 
 function AoE:draw()
