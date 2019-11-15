@@ -38,6 +38,18 @@ Data.skeletonEnemy = {}
 Data.skeletonEnemy.health = 100
 Data.skeletonEnemy.speed = 100
 Data.skeletonEnemy.revenue = 4
+
+Data.ghostEnemy = {}
+Data.ghostEnemy.health = 100
+Data.ghostEnemy.speed = 100
+Data.ghostEnemy.revenue = 4
+
+Data.demonEnemy = {}
+Data.demonEnemy.health = 100
+Data.demonEnemy.speed = 100
+Data.demonEnemy.revenue = 4
+
+
   
 --TOWERS
 

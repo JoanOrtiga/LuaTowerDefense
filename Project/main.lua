@@ -57,9 +57,10 @@ elseif(GameScene == 2) then
  
   for k,v in pairs(towerMap) do
     for x,z in pairs(v) do
-      z:update(dt)
       if(z.delete) then
         towerMap[k][x] = nil
+      else
+        z:update(dt)
       end
     end
   end

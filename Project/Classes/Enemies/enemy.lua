@@ -130,6 +130,7 @@ end
 
 function Enemy:slowed(slowLevel)
   if(self.isSlowed == false) then
+    print("lmao")
     self.isSlowed = true
     if(slowLevel == 1) then
       self.speed = self.speed - Data.slowTower1.slow
@@ -139,7 +140,7 @@ function Enemy:slowed(slowLevel)
   end
 end
 
-function Enemy:unSlowed(slowLevel)
+function Enemy:unSlowed()
   if(self.isSlowed == true) then
       self.isSlowed = false
       self.speed = self.originalSpeed
