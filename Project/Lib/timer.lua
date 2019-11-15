@@ -1,11 +1,13 @@
 Object = Object or require "Lib/object"
 Timer = Object:extend()
 
-function Timer:new(time, fun, rp)
+function Timer:new(time, fun, rp, timesToDie)
   self.f = fun
   self.tAct = time
   self.tFin = time
   self.rep = rp
+  self.timesToDie = timesToDie
+  self.timesSpawned = 0
 end
 
 function Timer:update(dt)
@@ -16,16 +18,29 @@ function Timer:update(dt)
     
     if self.rep == true then
       self.tAct = self.tFin
+      self.timesSpawned = self.timesSpawned + 1
       
-    else
-      for k, v in pairs(actorList) do 
+      if(self.timesSpawned >= self.timesToDie) then
+        for k, v in pairs(spawners) do 
         if v == self then
           e = k
         end
       end 
       
       if(e~=nil) then
-        table.remove(actorList,e)
+        table.remove(spawners,e)
+      end
+      end
+      
+    else
+      for k, v in pairs(spawners) do 
+        if v == self then
+          e = k
+        end
+      end 
+      
+      if(e~=nil) then
+        table.remove(spawners,e)
       end
     end
   end

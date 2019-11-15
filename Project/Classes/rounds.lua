@@ -5,7 +5,13 @@ local Timer = Timer or require("Lib/timer")
 
 
 local Skeleton = Skeleton or require "Classes/Enemies/skeleton"
-local Enemy = Enemy or require "Classes/Enemies/enemy"
+local Drowned = Drowned or require "Classes/Enemies/drowned"
+local SwampThing = SwampThing or require "Classes/Enemies/swampThing"
+local Ghost = Ghost or require "Classes/Enemies/ghost"
+local Demon = Demon or require "Classes/Enemies/demon"
+--local Enemy = Enemy or require "Classes/Enemies/enemy"
+
+spawners = {}
 
 function Rounds:new(level)
   self.round = 1
@@ -13,8 +19,10 @@ function Rounds:new(level)
   
   self.RoundActive = false
   
-  self.PlayerHP = 15
-  self.Money = 100
+  self.PlayerHP = Data.PlayerHP
+  self.Money = Data.initialMoney
+  
+  self.timer = nil
   
   Rounds.nextRound(self)
 end
@@ -24,49 +32,53 @@ function Rounds:update(dt)
     changeScene(1)
   end
   
-  self.timer = self.timer - dt
+  for k,v in pairs(spawners) do
+    v:update(dt)
+  end
   
-  if(self.timer <= 0) then
-    if(self.RoundActive == false) then
+  if(#spawners == 0) then
+    if(self.roundActive == true) then
+      self.roundActive = false
+      self.timer = Data.TimeBetweenWaves
+    end
+    self.timer = self.timer - dt
+    
+     if(self.timer <= 0) then
+    if(self.roundActive == false) then
       Round.changeRound(self)
-    else
-      self.timer = 10
-      sceneItems.skeletonSpawner = nil
-      sceneItems.enemySpawner = nil
-      self.RoundActive = false
     end
   end
+  end
+  
+ 
 end
 
 function Rounds:nextRound() 
+  self.roundActive = true
+  
   if(self.level == 1) then
-    if(self.round == 1) then
-      sceneItems.skeletonSpawner = Timer(1,spawnSkeleton,true)
-      self.timer = 7
-      self.RoundActive = true
-    elseif(self.round == 2) then
-      self.RoundActive = true
-      sceneItems.skeletonSpawner = Timer(1,spawnSkeleton,true)
-      --sceneItems.enemySpawner = Timer(1, spawnEnemy, true)
-      self.timer = 500
-    elseif(self.round == 3) then
-      
-      
-    elseif(self.round == 4) then
-    
-    elseif(self.round == 5) then
-    
-    elseif(self.round == 6) then
-    
-    elseif(self.round == 7) then
-    
-    elseif(self.round == 8) then
-    
-    elseif(self.round == 9) then
-    
-    elseif(self.round == 10) then
-    
+    if(Data.map1.round[self.round] ~= nil) then
+      for k,v in pairs(Data.map1.round[self.round]) do
+        Rounds.setSpawners(self, Data.map1.round[self.round][k])   
+      end
     end
+  end
+  
+end
+
+
+
+function Rounds:setSpawners(spawn)
+  if(spawn[1] == "skeleton") then
+    table.insert(spawners, Timer(spawn[3], spawnSkeleton, true, spawn[2]))
+  elseif(spawn[1] == "ghost") then
+    table.insert(spawners, Timer(spawn[3], spawnGhost, true, spawn[2]))
+  elseif(spawn[1] == "drowned") then
+    table.insert(spawners, Timer(spawn[3], spawnDrowned, true, spawn[2]))
+  elseif(spawn[1] == "demon") then
+    table.insert(spawners, Timer(spawn[3], spawnDemon, true, spawn[2]))
+  elseif(spawn[1] == "swampThing") then
+    table.insert(spawners, Timer(spawn[3], spawnSwampThing, true, spawn[2]))
   end
 end
 
@@ -78,12 +90,32 @@ end
 
 
 function spawnEnemy()
-  local enemy = Enemy()
+  local enemy = Enemy(125,25)
+  table.insert(enemies, enemy)
+end
+
+function spawnDrowned()
+  local enemy = Drowned(125, 25)
+  table.insert(enemies, enemy)
+end
+
+function spawnDemon()
+  local enemy = Demon(125, 25)
+  table.insert(enemies, enemy)
+end
+
+function spawnSwampThing()
+  local enemy = SwampThing(125, 25)
+  table.insert(enemies, enemy)
+end
+
+function spawnGhost()
+  local enemy = Ghost(125, 25)
   table.insert(enemies, enemy)
 end
 
 function spawnSkeleton()
-  local enemy = Skeleton(nil, 125, 25)
+  local enemy = Skeleton(125, 25)
   table.insert(enemies, enemy)
 end
 

@@ -23,12 +23,7 @@ require("Data/data")
 GameScene = 1
 
 function love.load()  
-        require("Classes/mousehandling")  
-
-  sampleFont = love.graphics.newFont('Resources/Fonts/pong.ttf', 15)
-  sampleFont2 = love.graphics.newFont('Resources/Fonts/pong.ttf', 50)
-  love.graphics.setFont(sampleFont)
-  
+  require("Classes/mousehandling")  
   changeScene(1)
 end
  

@@ -21,14 +21,12 @@ map = {
   
   gridSizeX = 50
   gridSizeY = 50
-  
-  player = {
-		grid_x = 0,
-		grid_y = 0,
-		act_x = 0,
-		act_y = 0,
-		speed = 10
-	}
+
+--Fonts--
+sampleFont = love.graphics.newFont('Resources/Fonts/pong.ttf', 15)
+sampleFont2 = love.graphics.newFont('Resources/Fonts/pong.ttf', 50)
+sampleFont3 = love.graphics.newFont('Resources/Fonts/pong.ttf', 100)
+love.graphics.setFont(sampleFont)
   
   
 Data = {}
@@ -40,21 +38,28 @@ Data.skeletonEnemy.speed = 100
 Data.skeletonEnemy.revenue = 4
 
 Data.ghostEnemy = {}
-Data.ghostEnemy.health = 100
-Data.ghostEnemy.speed = 100
+Data.ghostEnemy.health = 120
+Data.ghostEnemy.speed = 120
 Data.ghostEnemy.revenue = 4
 
 Data.demonEnemy = {}
-Data.demonEnemy.health = 100
-Data.demonEnemy.speed = 100
+Data.demonEnemy.health = 50
+Data.demonEnemy.speed = 300
 Data.demonEnemy.revenue = 4
 
+Data.drownedEnemy = {}
+Data.drownedEnemy.health = 200
+Data.drownedEnemy.speed = 100
+Data.drownedEnemy.revenue = 4
 
-  
+Data.swampThingEnemy = {}
+Data.swampThingEnemy.health = 250
+Data.swampThingEnemy.speed = 60
+Data.swampThingEnemy.revenue = 4
+
 --TOWERS
 
---Money Revenue for destroying the tower.
-Data.destroyRevenue = 5
+
 
 ---archerTower LVL 1---
 Data.archerTower = {}
@@ -132,5 +137,25 @@ Data.sniperTower2.cost = 20
 Data.sniperTower2.radius = 250-- en pixels
 Data.sniperTower2.attackDamage = 90
 Data.sniperTower2.attackSpeed = 2
+
+
+--Money Revenue for destroying the tower.
+Data.destroyRevenue = 5
+Data.initialMoney = 100
+Data.PlayerHP = 15
+Data.TimeBetweenWaves = 5
+--MAP 1 ROUNDS-- {{"tipus enemic", cantitat d'spawns, temps entre spawns}}
+Data.map1 = {}
+Data.map1.round = {}
+Data.map1.round[1] = {{"skeleton", 10, 0.5}}
+Data.map1.round[2] = {{"skeleton", 10, 0.5},{"ghost", 5, 1}}
+Data.map1.round[3] = {{"skeleton", 40, 0.7}}
+Data.map1.round[4] = {{"swampThing", 5, 1}}
+Data.map1.round[5] = {{"demon", 5, 1}}
+Data.map1.round[6] = {{"demon", 5, 1}}
+Data.map1.round[7] = {{"demon", 5, 1}}
+Data.map1.round[8] = {{"demon", 5, 1}}
+Data.map1.round[9] = {{"demon", 5, 1}}
+Data.map1.round[10] = {{"demon", 5, 1}}
 
 

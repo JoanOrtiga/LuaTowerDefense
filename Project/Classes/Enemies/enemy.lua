@@ -130,12 +130,15 @@ end
 
 function Enemy:slowed(slowLevel)
   if(self.isSlowed == false) then
-    print("lmao")
     self.isSlowed = true
     if(slowLevel == 1) then
       self.speed = self.speed - Data.slowTower1.slow
     elseif(slowLevel == 2) then
       self.speed = self.speed - Data.slowTower2.slow
+    end
+    
+    if(self.speed < 30) then
+      self.speed = 30
     end
   end
 end
