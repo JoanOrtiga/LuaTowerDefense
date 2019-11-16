@@ -164,19 +164,19 @@ function changeScene(newScene)
     
     function love.mousepressed()
     end
-  GameScene = 1
-elseif(newScene == 2) then
-  restartMouseHandling()
-  GameScene = 2
+  
+    GameScene = 1
+  elseif(newScene == 2) then
+    restartMouseHandling()
+    GameScene = 2
 
-clickedSquare = { x = 1, y = 1 }
-      ShopBoxHUD = ShopBox()
+    clickedSquare = { x = 1, y = 1 }
+    ShopBoxHUD = ShopBox()
+    Backgrounds = Background()
   
-      Backgrounds = Background()
+    ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
   
-      ClickedSqr = ClickedSquare(clickedSquare.x, clickedSquare.y)
-  
-      Round = Rounds(1, 2)
+    Round = Rounds(1, 2)
       
   end
   

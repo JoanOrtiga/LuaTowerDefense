@@ -13,7 +13,12 @@ function pauseButton:update(dt)
 end
 
 function pauseButton:draw()
-  pauseButton.super.draw(self)  
+  pauseButton.super.draw(self)
+  
+  if(pauseGame == true) then
+    love.graphics.setFont(sampleFont2)
+    love.graphics.print("PAUSED", 340, 750)
+  end
   
   if(pauseButton.super.isPressed(self) and pressed == false) then
     pressed = true
